@@ -1,41 +1,8 @@
-# Java
 *.class
-*.jar
-*.war
-*.ear
-
-# IntelliJ IDEA
 .idea/
-*.iml
-
-# Eclipse
-.project
-.classpath
-.settings/
-
-# VS Code
 .vscode/
-
-# Build folders
+__pycache__/
+*.pyc
 bin/
 out/
 target/
-build/
-
-# Logs
-*.log
-
-# OS Files
-.DS_Store
-Thumbs.db
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Environment files
-.env
-venv/
-.venv/
