@@ -6,3 +6,6 @@ __pycache__/
 bin/
 out/
 target/
+*.db
+*.jar
+Sample Files/
