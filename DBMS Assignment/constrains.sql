@@ -9,6 +9,7 @@
  * 4. UNIQUE
  * 5. CHECK
  * 6. DEFAULT
+ * 7. INDEX
  */
 
 CREATE DATABASE IF NOT EXISTS college_db;
@@ -48,3 +49,9 @@ SELECT * FROM categories;
 
 -- Display all books
 SELECT * FROM books;
+
+-- Create Index on book_title column
+CREATE INDEX idx_book_title ON books(book_title);
+
+-- Search using indexed column
+SELECT * FROM books WHERE book_title = 'Core Java';
