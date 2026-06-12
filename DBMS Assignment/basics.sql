@@ -23,6 +23,8 @@
  * 17. GROUP BY
  * 18. HAVING
  * 19. MIN, MAX, AVG
+ * 20. SELECT TOP/LIMIT
+ * 21. SQL INJECTION (Theory)
  */
 
 CREATE DATABASE college_db;
@@ -73,6 +75,14 @@ SELECT MAX(percentage) AS HighestPercentage FROM students;
 SELECT branch, COUNT(*) AS TotalStudents FROM students GROUP BY branch;
 -- Display branches having more than 1 student
 SELECT branch, COUNT(*) AS TotalStudents FROM students GROUP BY branch HAVING COUNT(*) > 1;
+-- Select top 2 students by percentage
+SELECT * FROM students ORDER BY percentage DESC LIMIT 2;
+/**
+SQL Injection is a cyber attack where an attacker inserts malicious SQL code into an input field to manipulate the database query. 
+For example, entering `' OR '1'='1` in a login form can bypass authentication by making the query always true. 
+It can lead to unauthorized data access, data deletion, or full database exposure. 
+It is prevented using **Prepared Statements**, input validation, and stored procedures.
+*/
 
 
 
