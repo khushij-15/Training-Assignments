@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAVBAR (injected by JS) -->
+  <div id="navbar-placeholder"></div>
+
+  <div class="container">
+    <div class="form-wrapper">
+
+      <h2 class="form-title" id="formTitle">Contact</h2>
+
+      <form id="contactForm" novalidate>
+
+        <!-- Hidden index for edit mode -->
+        <input type="hidden" id="contactIndex">
+
+        <!-- SECTION 1 : Personal Info -->
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <div class="form-group">
+            <label for="fullName">Full Name <span class="required">*</span></label>
+            <input type="text" id="fullName" name="fullName" class="form-control"
+              placeholder="Enter full name" maxlength="50" required autofocus>
+            <span class="error-msg" id="nameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label>Gender</label>
+            <div>
+              <label class="radio-inline"><input type="radio" name="gender" value="Male"> Male</label>
+              <label class="radio-inline"><input type="radio" name="gender" value="Female"> Female</label>
+              <label class="radio-inline"><input type="radio" name="gender" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="photo">Profile Photo</label>
+            <input type="file" id="photo" name="photo" class="form-control" accept="image/*">
+            <small class="text-muted photo-hint"></small>
+          </div>
+
+        </fieldset>
+
+        <!-- SECTION 2 : Contact Info -->
+        <fieldset>
+          <legend>Contact Information</legend>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" class="form-control"
+              placeholder="example@email.com" required>
+            <span class="error-msg" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" class="form-control"
+              placeholder="+91 XXXXX XXXXX" pattern="[0-9]{10}" maxlength="10" required>
+            <span class="error-msg" id="phoneError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="website">Website / LinkedIn</label>
+            <input type="url" id="website" name="website" class="form-control"
+              placeholder="https://example.com">
+          </div>
+
+        </fieldset>
+
+        <!-- SECTION 3 : Category & Notes -->
+        <fieldset>
+          <legend>Category &amp; Notes</legend>
+
+          <div class="form-group">
+            <label for="category">Category <span class="required">*</span></label>
+            <select id="category" name="category" class="form-control" required>
+              <option value="">-- Select Category --</option>
+              <option value="Work">Work</option>
+              <option value="Friend">Friend</option>
+              <option value="Family">Family</option>
+              <option value="Other">Other</option>
+            </select>
+            <span class="error-msg" id="categoryError"></span>
+          </div>
+
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="isFavourite" name="isFavourite">
+              Mark as Favourite
+              <span class="glyphicon glyphicon-star" style="color:#f39c12;"></span>
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" class="form-control"
+              placeholder="Any additional notes..." rows="3" maxlength="200"></textarea>
+          </div>
+
+        </fieldset>
+
+        <!-- BUTTONS -->
+        <div class="form-buttons">
+          <button type="submit" class="btn" id="submitBtn" onclick="submitContact(event)">
+          </button>
+          <a href="index.html" class="btn btn-default">Cancel</a>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
