@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="js/validation.js"></script>
 <title>Login</title>
 </head>
 
@@ -11,7 +12,7 @@
 
     <h2>Login</h2>
 
-    <form action="LoginServlet" method="post">
+    <form action="LoginServlet" method="post" onSubmit="return validateLogin()">
 
         <table>
 

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="js/validation.js"></script>
 <title>Register</title>
 </head>
 
@@ -11,7 +12,7 @@
 
     <h2>User Registration</h2>
 
-    <form action="RegisterServlet" method="post">
+    <form action="RegisterServlet" method="post" onsubmit="validateRegister()">
 
         <table>
 
