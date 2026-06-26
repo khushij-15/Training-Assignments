@@ -6,26 +6,29 @@ pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
 <title>Welcome</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<%
-String username = (String) session.getAttribute("username");
+	<%
+	String username = (String) session.getAttribute("username");
+	
+	if(username == null){
+	
+	    response.sendRedirect("login.jsp");
+	    return;
+	
+	}
+	%>
 
-if(username == null){
+	<div class="container">
+		<h1>Welcome, <%= username %> !</h1>
 
-    response.sendRedirect("login.jsp");
-    return;
-
-}
-%>
-
-<h2>Welcome <%= username %></h2>
-
-<br><br>
-
-<a href="LogoutServlet">Logout</a>
+		<p>You have successfully logged in.</p>
+		
+		<a href="LogoutServlet" class="logout-btn">Logout</a>
+	</div>
 
 </body>
 </html>

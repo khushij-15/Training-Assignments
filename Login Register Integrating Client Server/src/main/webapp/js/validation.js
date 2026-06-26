@@ -3,17 +3,22 @@ function validateLogin() {
     let username = document.getElementById("username").value.trim();
     let password = document.getElementById("password").value.trim();
 
+    document.getElementById("usernameError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+
+    let valid = true;
+
     if (username === "") {
-        alert("Username is required");
-        return false;
+        document.getElementById("usernameError").innerHTML = "Username is required";
+        valid = false;
     }
 
     if (password === "") {
-        alert("Password is required");
-        return false;
+        document.getElementById("passwordError").innerHTML = "Password is required";
+        valid = false;
     }
 
-    return true;
+    return valid;
 }
 
 function validateRegister() {
@@ -23,37 +28,45 @@ function validateRegister() {
     let password = document.getElementById("password").value;
     let confirmPassword = document.getElementById("confirmPassword").value;
 
+    document.getElementById("usernameError").innerHTML = "";
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+    document.getElementById("confirmPasswordError").innerHTML = "";
+
+    let valid = true;
+
     if (username === "") {
-        alert("Username is required");
-        return false;
+        document.getElementById("usernameError").innerHTML = "Username is required";
+        valid = false;
     }
 
     if (email === "") {
-        alert("Email is required");
-        return false;
-    }
+        document.getElementById("emailError").innerHTML = "Email is required";
+        valid = false;
+    } else {
 
-    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(email)) {
-        alert("Enter a valid email");
-        return false;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailError").innerHTML = "Enter a valid email";
+            valid = false;
+        }
     }
 
     if (password === "") {
-        alert("Password is required");
-        return false;
+        document.getElementById("passwordError").innerHTML = "Password is required";
+        valid = false;
     }
 
     if (confirmPassword === "") {
-        alert("Confirm Password is required");
-        return false;
+        document.getElementById("confirmPasswordError").innerHTML = "Confirm Password is required";
+        valid = false;
     }
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return false;
+    if (password !== "" && confirmPassword !== "" && password !== confirmPassword) {
+        document.getElementById("confirmPasswordError").innerHTML = "Passwords do not match";
+        valid = false;
     }
 
-    return true;
+    return valid;
 }

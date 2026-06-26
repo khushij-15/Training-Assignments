@@ -45,8 +45,7 @@ public class LoginServlet extends HttpServlet {
 	    
 	    for (User user : UserStore.users) {
 
-	        if (user.getUsername().equals(username)
-	                && user.getPassword().equals(password)) {
+	        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
 
 	            HttpSession session = request.getSession();
 
