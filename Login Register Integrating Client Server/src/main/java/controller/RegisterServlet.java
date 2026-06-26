@@ -44,10 +44,9 @@ public class RegisterServlet extends HttpServlet {
 
 	    if (!password.equals(confirmPassword)) {
 
-	        response.setContentType("text/html");
+	    	request.setAttribute("error", "Passwords do not match!");
 
-	        response.getWriter().println("<h2>Passwords do not match!</h2>");
-	        response.getWriter().println("<a href='register.jsp'>Try Again</a>");
+	    	request.getRequestDispatcher("register.jsp").forward(request, response);
 
 	        return;
 	    }
@@ -56,18 +55,16 @@ public class RegisterServlet extends HttpServlet {
 
 	        if (existingUser.getUsername().equalsIgnoreCase(username)) {
 
-	            response.setContentType("text/html");
-	            response.getWriter().println("<h2>Username already exists!</h2>");
-	            response.getWriter().println("<a href='register.jsp'>Try Again</a>");
-	            return;
+	        	request.setAttribute("error", "Username already exists!");
+	        	request.getRequestDispatcher("register.jsp").forward(request, response);
+	        	return;
 	        }
 
 	        if (existingUser.getEmail().equalsIgnoreCase(email)) {
 
-	            response.setContentType("text/html");
-	            response.getWriter().println("<h2>Email already registered!</h2>");
-	            response.getWriter().println("<a href='register.jsp'>Try Again</a>");
-	            return;
+	        	response.getWriter().println("<h2>Email already registered!</h2>");
+	        	response.getWriter().println("<a href='register.jsp'>Try Again</a>");
+	        	return;
 	        }
 	    }
 

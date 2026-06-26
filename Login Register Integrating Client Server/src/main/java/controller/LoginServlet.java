@@ -58,10 +58,9 @@ public class LoginServlet extends HttpServlet {
 	        }
 	    }
 	    
-	    response.setContentType("text/html");
+	    request.setAttribute("error", "Invalid Username or Password");
 
-	    response.getWriter().println("<h2>Invalid Username or Password</h2>");
-	    response.getWriter().println("<a href='login.jsp'>Try Again</a>");
+	    request.getRequestDispatcher("login.jsp").forward(request, response);
 	    
 	}
 
