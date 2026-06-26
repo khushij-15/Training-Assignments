@@ -51,6 +51,25 @@ public class RegisterServlet extends HttpServlet {
 
 	        return;
 	    }
+	    
+	    for (User existingUser : UserStore.users) {
+
+	        if (existingUser.getUsername().equalsIgnoreCase(username)) {
+
+	            response.setContentType("text/html");
+	            response.getWriter().println("<h2>Username already exists!</h2>");
+	            response.getWriter().println("<a href='register.jsp'>Try Again</a>");
+	            return;
+	        }
+
+	        if (existingUser.getEmail().equalsIgnoreCase(email)) {
+
+	            response.setContentType("text/html");
+	            response.getWriter().println("<h2>Email already registered!</h2>");
+	            response.getWriter().println("<a href='register.jsp'>Try Again</a>");
+	            return;
+	        }
+	    }
 
 	    User user = new User(username, email, password);
 
