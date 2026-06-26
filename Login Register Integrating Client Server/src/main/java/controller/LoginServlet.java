@@ -1,11 +1,16 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.User;
+import model.UserStore;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,15 +43,26 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 	    String password = request.getParameter("password");
 	    
-		response.setContentType("text/html");
+	    for (User user : UserStore.users) {
 
-		response.getWriter().println("<h2>Login Details</h2>");
+	        if (user.getUsername().equals(username)
+	                && user.getPassword().equals(password)) {
 
-	    response.getWriter().println("Username : " + username);
+	            HttpSession session = request.getSession();
 
-	    response.getWriter().println("<br>");
+	            session.setAttribute("username", username);
 
-	    response.getWriter().println("Password : " + password);
+	            response.sendRedirect("welcome.jsp");
+
+	            return;
+	        }
+	    }
+	    
+	    response.setContentType("text/html");
+
+	    response.getWriter().println("<h2>Invalid Username or Password</h2>");
+	    response.getWriter().println("<a href='login.jsp'>Try Again</a>");
+	    
 	}
 
 }
